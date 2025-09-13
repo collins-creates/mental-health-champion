@@ -1,12 +1,11 @@
 /* Mental Health Champion - Responsive Design
- * Mobile-first approach with breakpoints for tablets and desktops
- */
+ * Mobile-first approach with breakpoints for tablets and desktops */
 
 /* Base mobile styles */
 @media (max-width: 767px) {
     /* Mobile Navigation */
     .hamburger {
-        display: flex;
+        display: flex !important;
         cursor: pointer;
         z-index: var(--z-fixed);
     }
@@ -24,41 +23,42 @@
     }
     
     .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: var(--white);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: var(--spacing-lg) 0;
-        height: calc(100vh - 70px);
-        overflow-y: auto;
-        z-index: var(--z-fixed);
+        position: fixed !important;
+        left: -100% !important;
+        top: 70px !important;
+        flex-direction: column !important;
+        background-color: var(--white) !important;
+        width: 100% !important;
+        text-align: center !important;
+        transition: 0.3s !important;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05) !important;
+        padding: var(--spacing-lg) 0 !important;
+        height: calc(100vh - 70px) !important;
+        overflow-y: auto !important;
+        z-index: var(--z-fixed) !important;
+        display: flex !important;
     }
     
     .nav-menu.active {
-        left: 0;
+        left: 0 !important;
     }
     
     .nav-menu li {
-        margin: var(--spacing-md) 0;
+        margin: var(--spacing-md) 0 !important;
     }
     
     .nav-link {
-        display: block;
-        padding: var(--spacing-md) var(--spacing-lg);
-        font-size: var(--font-size-lg);
+        display: block !important;
+        padding: var(--spacing-md) var(--spacing-lg) !important;
+        font-size: var(--font-size-lg) !important;
     }
     
     .nav-controls {
-        gap: var(--spacing-md);
+        gap: var(--spacing-md) !important;
     }
     
     .navbar.scrolled + .nav-menu {
-        top: 55px;
+        top: 55px !important;
     }
 }
 
