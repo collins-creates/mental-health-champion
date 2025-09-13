@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Booking Flow</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-button {
+            margin: 10px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .console-output {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Test Booking Flow</h1>
+        
+        <div class="test-section">
+            <h2>Test 1: Check if liveTherapistsManager is loaded</h2>
+            <button class="test-button" onclick="testManager()">Test Manager</button>
+            <div id="manager-status"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Test 2: Test Booking Buttons</h2>
+            <button class="test-button" onclick="testIndividualBooking()">Test Individual Booking</button>
+            <button class="test-button" onclick="testGroupBooking()">Test Group Booking</button>
+            <button class="test-button" onclick="testCouplesBooking()">Test Couples Booking</button>
+            <div id="booking-status"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Test 3: Test Direct Therapist Booking</h2>
+            <button class="test-button" onclick="testTherapistBooking(1)">Book Therapist 1</button>
+            <button class="test-button" onclick="testTherapistBooking(2)">Book Therapist 2</button>
+            <button class="test-button" onclick="testTherapistBooking(3)">Book Therapist 3</button>
+            <div id="therapist-status"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Console Output</h2>
+            <div id="console-output" class="console-output"></div>
+        </div>
+    </div>
+
+    <!-- Include the liveTherapists.js file -->
+    <script src="js/liveTherapists.js"></script>
+    
+    <script>
+        // Override console.log to display output
+        const originalLog = console.log;
+        const originalError = console.error;
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addConsoleOutput('LOG: ' + args.join(' '));
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addConsoleOutput('ERROR: ' + args.join(' '));
+        };
+        
+        function addConsoleOutput(message) {
+            const output = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            output.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            output.scrollTop = output.scrollHeight;
+        }
+        
+        function showStatus(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+        
+        function testManager() {
+            console.log('Testing liveTherapistsManager...');
+            
+            if (window.liveTherapistsManager) {
+                console.log('liveTherapistsManager found');
+                console.log('Therapists loaded:', window.liveTherapistsManager.therapists.length);
+                console.log('Filtered therapists:', window.liveTherapistsManager.filteredTherapists.length);
+                showStatus('manager-status', '✅ liveTherapistsManager is loaded with ' + window.liveTherapistsManager.therapists.length + ' therapists', 'success');
+            } else {
+                console.error('liveTherapistsManager not found');
+                showStatus('manager-status', '❌ liveTherapistsManager not found', 'error');
+            }
+        }
+        
+        function testIndividualBooking() {
+            console.log('Testing individual booking...');
+            try {
+                bookIndividualSession(new Event('click'));
+                showStatus('booking-status', '✅ Individual booking function called', 'success');
+            } catch (error) {
+                console.error('Error in individual booking:', error);
+                showStatus('booking-status', '❌ Error in individual booking: ' + error.message, 'error');
+            }
+        }
+        
+        function testGroupBooking() {
+            console.log('Testing group booking...');
+            try {
+                bookGroupSession(new Event('click'));
+                showStatus('booking-status', '✅ Group booking function called', 'success');
+            } catch (error) {
+                console.error('Error in group booking:', error);
+                showStatus('booking-status', '❌ Error in group booking: ' + error.message, 'error');
+            }
+        }
+        
+        function testCouplesBooking() {
+            console.log('Testing couples booking...');
+            try {
+                bookCouplesSession(new Event('click'));
+                showStatus('booking-status', '✅ Couples booking function called', 'success');
+            } catch (error) {
+                console.error('Error in couples booking:', error);
+                showStatus('booking-status', '❌ Error in couples booking: ' + error.message, 'error');
+            }
+        }
+        
+        function testTherapistBooking(therapistId) {
+            console.log('Testing therapist booking for ID:', therapistId);
+            try {
+                bookSession(therapistId);
+                showStatus('therapist-status', '✅ Therapist booking function called for ID ' + therapistId, 'success');
+            } catch (error) {
+                console.error('Error in therapist booking:', error);
+                showStatus('therapist-status', '❌ Error in therapist booking: ' + error.message, 'error');
+            }
+        }
+        
+        // Initialize the test
+        window.addEventListener('load', function() {
+            console.log('Test page loaded');
+            addConsoleOutput('=== Test Session Started ===');
+        });
+    </script>
+</body>
+</html>

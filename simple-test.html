@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Modal Test</title>
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/crisisSupport.js"></script>
+    <script src="debug.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 10px 10px 0;
+        }
+        .test-btn:hover {
+            background: #357abd;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Simple Modal Test</h1>
+        
+        <button class="test-btn" onclick="testBreathing()">Test Breathing Exercise</button>
+        <button class="test-btn" onclick="testMeditation()">Test Meditation</button>
+        <button class="test-btn" onclick="testManager()">Test Manager</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function testManager() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+            
+            if (window.crisisSupportManager) {
+                resultDiv.innerHTML += '<div class="result success">✓ crisisSupportManager exists</div>';
+                
+                if (typeof window.crisisSupportManager.showBreathingExercise === 'function') {
+                    resultDiv.innerHTML += '<div class="result success">✓ showBreathingExercise method exists</div>';
+                } else {
+                    resultDiv.innerHTML += '<div class="result error">✗ showBreathingExercise method missing</div>';
+                }
+                
+                if (typeof window.crisisSupportManager.showMindfulnessMeditation === 'function') {
+                    resultDiv.innerHTML += '<div class="result success">✓ showMindfulnessMeditation method exists</div>';
+                } else {
+                    resultDiv.innerHTML += '<div class="result error">✗ showMindfulnessMeditation method missing</div>';
+                }
+            } else {
+                resultDiv.innerHTML += '<div class="result error">✗ crisisSupportManager not found</div>';
+                
+                if (typeof CrisisSupportManager !== 'undefined') {
+                    window.crisisSupportManager = new CrisisSupportManager();
+                    resultDiv.innerHTML += '<div class="result info">⚠ Created crisisSupportManager</div>';
+                    setTimeout(testManager, 100);
+                }
+            }
+        }
+
+        function testBreathing() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<div class="result info">Testing breathing exercise...</div>';
+            
+            if (window.crisisSupportManager && typeof window.crisisSupportManager.showBreathingExercise === 'function') {
+                try {
+                    window.crisisSupportManager.showBreathingExercise();
+                    resultDiv.innerHTML += '<div class="result success">✓ Breathing exercise modal opened</div>';
+                } catch (error) {
+                    resultDiv.innerHTML += `<div class="result error">✗ Error: ${error.message}</div>`;
+                }
+            } else {
+                resultDiv.innerHTML += '<div class="result error">✗ Breathing exercise not available</div>';
+                testManager();
+            }
+        }
+
+        function testMeditation() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<div class="result info">Testing meditation...</div>';
+            
+            if (window.crisisSupportManager && typeof window.crisisSupportManager.showMindfulnessMeditation === 'function') {
+                try {
+                    window.crisisSupportManager.showMindfulnessMeditation();
+                    resultDiv.innerHTML += '<div class="result success">✓ Meditation modal opened</div>';
+                } catch (error) {
+                    resultDiv.innerHTML += `<div class="result error">✗ Error: ${error.message}</div>`;
+                }
+            } else {
+                resultDiv.innerHTML += '<div class="result error">✗ Meditation not available</div>';
+                testManager();
+            }
+        }
+
+        // Auto-test on load
+        window.addEventListener('load', () => {
+            setTimeout(testManager, 500);
+        });
+    </script>
+</body>
+</html>

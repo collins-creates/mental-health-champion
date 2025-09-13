@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Test - Breathing & Meditation</title>
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <script src="js/crisisSupport.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .test-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 10px 10px 0;
+            transition: background 0.3s ease;
+        }
+        .test-btn:hover {
+            background: #357abd;
+        }
+        .test-btn.success {
+            background: #28a745;
+        }
+        .test-btn.success:hover {
+            background: #218838;
+        }
+        .test-btn.error {
+            background: #dc3545;
+        }
+        .test-btn.error:hover {
+            background: #c82333;
+        }
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .resource-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-2px);
+        }
+        .resource-icon {
+            font-size: 2rem;
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+        .resource-card h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .resource-card p {
+            margin: 0 0 15px 0;
+            color: #666;
+        }
+        .btn-small {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+        .btn-small:hover {
+            background: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1><i class="fas fa-heart"></i> Final Test - Breathing & Meditation Features</h1>
+        
+        <div class="test-section">
+            <h2><i class="fas fa-cogs"></i> System Status</h2>
+            <button class="test-btn" onclick="checkSystemStatus()">Check System Status</button>
+            <div id="systemStatus"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2><i class="fas fa-wind"></i> Breathing Exercise</h2>
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <h3>Breathing Exercises</h3>
+                <p>Simple breathing techniques to calm your mind and reduce anxiety quickly.</p>
+                <div class="resource-meta">
+                    <span class="resource-type">Meditation</span>
+                    <span class="resource-duration">5-10 minutes</span>
+                </div>
+                <a href="#" class="btn-small" onclick="if(window.crisisSupportManager) { window.crisisSupportManager.showBreathingExercise(); } else { console.error('Crisis support manager not available'); }">Try Now</a>
+            </div>
+            <div id="breathingStatus"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2><i class="fas fa-brain"></i> Mindfulness Meditation</h2>
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Mindfulness Meditation</h3>
+                <p>Learn basic mindfulness techniques to reduce stress and increase awareness.</p>
+                <div class="resource-meta">
+                    <span class="resource-type">Meditation</span>
+                    <span class="resource-duration">10-15 minutes</span>
+                </div>
+                <a href="#" class="btn-small" onclick="if(window.crisisSupportManager) { window.crisisSupportManager.showMindfulnessMeditation(); } else { console.error('Crisis support manager not available'); }">Start Practice</a>
+            </div>
+            <div id="meditationStatus"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2><i class="fas fa-check-circle"></i> Test Results</h2>
+            <button class="test-btn" onclick="runAllTests()">Run All Tests</button>
+            <div id="testResults"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkSystemStatus() {
+            const statusDiv = document.getElementById('systemStatus');
+            statusDiv.innerHTML = '<div class="status info">Checking system status...</div>';
+            
+            setTimeout(() => {
+                let status = '';
+                
+                // Check CrisisSupportManager
+                if (window.crisisSupportManager) {
+                    status += '<div class="status success">✓ CrisisSupportManager is initialized</div>';
+                } else {
+                    status += '<div class="status error">✗ CrisisSupportManager is not initialized</div>';
+                    if (typeof CrisisSupportManager !== 'undefined') {
+                        window.crisisSupportManager = new CrisisSupportManager();
+                        status += '<div class="status info">⚠ CrisisSupportManager initialized on demand</div>';
+                    }
+                }
+                
+                // Check methods
+                if (window.crisisSupportManager) {
+                    const methods = ['showBreathingExercise', 'showMindfulnessMeditation'];
+                    methods.forEach(method => {
+                        if (typeof window.crisisSupportManager[method] === 'function') {
+                            status += `<div class="status success">✓ ${method} method is available</div>`;
+                        } else {
+                            status += `<div class="status error">✗ ${method} method is missing</div>`;
+                        }
+                    });
+                }
+                
+                // Check CSS
+                const testElement = document.createElement('div');
+                testElement.className = 'modal-overlay';
+                document.body.appendChild(testElement);
+                const computedStyle = window.getComputedStyle(testElement);
+                const hasModalStyles = computedStyle.position === 'fixed';
+                document.body.removeChild(testElement);
+                
+                if (hasModalStyles) {
+                    status += '<div class="status success">✓ Modal CSS styles are loaded</div>';
+                } else {
+                    status += '<div class="status error">✗ Modal CSS styles are not loaded</div>';
+                }
+                
+                statusDiv.innerHTML = status;
+            }, 500);
+        }
+        
+        function runAllTests() {
+            const resultsDiv = document.getElementById('testResults');
+            resultsDiv.innerHTML = '<div class="status info">Running all tests...</div>';
+            
+            setTimeout(() => {
+                let results = '';
+                let passedTests = 0;
+                let totalTests = 0;
+                
+                // Test 1: System initialization
+                totalTests++;
+                if (window.crisisSupportManager) {
+                    results += '<div class="status success">✓ Test 1: System initialization - PASSED</div>';
+                    passedTests++;
+                } else {
+                    results += '<div class="status error">✗ Test 1: System initialization - FAILED</div>';
+                }
+                
+                // Test 2: Breathing exercise method
+                totalTests++;
+                if (window.crisisSupportManager && typeof window.crisisSupportManager.showBreathingExercise === 'function') {
+                    results += '<div class="status success">✓ Test 2: Breathing exercise method - PASSED</div>';
+                    passedTests++;
+                } else {
+                    results += '<div class="status error">✗ Test 2: Breathing exercise method - FAILED</div>';
+                }
+                
+                // Test 3: Meditation method
+                totalTests++;
+                if (window.crisisSupportManager && typeof window.crisisSupportManager.showMindfulnessMeditation === 'function') {
+                    results += '<div class="status success">✓ Test 3: Meditation method - PASSED</div>';
+                    passedTests++;
+                } else {
+                    results += '<div class="status error">✗ Test 3: Meditation method - FAILED</div>';
+                }
+                
+                // Test 4: Modal CSS
+                totalTests++;
+                const testElement = document.createElement('div');
+                testElement.className = 'modal-overlay';
+                document.body.appendChild(testElement);
+                const computedStyle = window.getComputedStyle(testElement);
+                const hasModalStyles = computedStyle.position === 'fixed';
+                document.body.removeChild(testElement);
+                
+                if (hasModalStyles) {
+                    results += '<div class="status success">✓ Test 4: Modal CSS styles - PASSED</div>';
+                    passedTests++;
+                } else {
+                    results += '<div class="status error">✗ Test 4: Modal CSS styles - FAILED</div>';
+                }
+                
+                // Summary
+                const percentage = Math.round((passedTests / totalTests) * 100);
+                let summaryClass = percentage >= 75 ? 'success' : percentage >= 50 ? 'info' : 'error';
+                results += `<div class="status ${summaryClass}"><strong>Test Summary: ${passedTests}/${totalTests} tests passed (${percentage}%)</strong></div>`;
+                
+                if (percentage === 100) {
+                    results += '<div class="status success">🎉 All tests passed! The breathing exercise and meditation features should work correctly.</div>';
+                }
+                
+                resultsDiv.innerHTML = results;
+            }, 1000);
+        }
+        
+        // Auto-run system status check on page load
+        window.addEventListener('load', () => {
+            setTimeout(checkSystemStatus, 1000);
+        });
+        
+        // Monitor for modal creation
+        const originalCreateElement = document.createElement;
+        document.createElement = function(tagName) {
+            const element = originalCreateElement.call(document, tagName);
+            if (tagName === 'div' && element.id === 'breathingExerciseModal') {
+                console.log('Breathing exercise modal created');
+            } else if (tagName === 'div' && element.id === 'meditationModal') {
+                console.log('Meditation modal created');
+            }
+            return element;
+        };
+    </script>
+</body>
+</html>

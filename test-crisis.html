@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Crisis Support Function</title>
+    <script src="js/crisisSupport.js"></script>
+</head>
+<body>
+    <h1>Testing toggleCrisisSupport Function</h1>
+    <button onclick="testToggleCrisisSupport()">Test toggleCrisisSupport</button>
+    <div id="result"></div>
+
+    <script>
+        function testToggleCrisisSupport() {
+            const resultDiv = document.getElementById('result');
+            
+            // Check if the function exists
+            if (typeof toggleCrisisSupport === 'function') {
+                resultDiv.innerHTML = '<p style="color: green;">✓ toggleCrisisSupport function is available!</p>';
+                
+                // Test if crisisSupportManager exists
+                if (window.crisisSupportManager) {
+                    resultDiv.innerHTML += '<p style="color: green;">✓ crisisSupportManager is initialized!</p>';
+                } else {
+                    resultDiv.innerHTML += '<p style="color: orange;">⚠ crisisSupportManager not yet initialized (this is normal before DOMContentLoaded)</p>';
+                }
+            } else {
+                resultDiv.innerHTML = '<p style="color: red;">✗ toggleCrisisSupport function is NOT available!</p>';
+            }
+        }
+
+        // Auto-test after page load
+        window.addEventListener('load', () => {
+            setTimeout(testToggleCrisisSupport, 100);
+        });
+    </script>
+</body>
+</html>

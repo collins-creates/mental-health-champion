@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mental Health Champion - Your supportive community for mental wellness">
+    <title>Mental Health Champion - Home</title>
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4a90e2">
+</head>
+<body>
+    <!-- Crisis Support Button -->
+    <div class="crisis-support" id="crisisSupport">
+        <button class="crisis-btn" onclick="toggleCrisisSupport()">
+            <i class="fas fa-phone-alt"></i> Crisis Support
+        </button>
+        <div class="crisis-dropdown" id="crisisDropdown">
+            <h3>Emergency Resources</h3>
+            <div class="hotline-item">
+                <strong>National Suicide Prevention Lifeline:</strong><br>
+                <a href="tel:988">988</a> or <a href="tel:1-800-273-8255">1-800-273-8255</a>
+            </div>
+            <div class="hotline-item">
+                <strong>Crisis Text Line:</strong><br>
+                Text HOME to <a href="sms:741741">741741</a>
+            </div>
+            <div class="hotline-item">
+                <strong>Trevor Project (LGBTQ+):</strong><br>
+                <a href="tel:1-866-488-7386">1-866-488-7386</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Mental Health Champion</span>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="resources.html" class="nav-link">Resources</a></li>
+                <li><a href="community.html" class="nav-link">Community</a></li>
+                <li><a href="live-therapists.html" class="nav-link">Live Therapists</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="mood-tracker.html" class="nav-link">Mood Tracker</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="font-resize" onclick="increaseFontSize()">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="font-resize" onclick="decreaseFontSize()">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="text-to-speech" onclick="readPage()">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button class="accessibility-toggle-btn" id="accessibilityToggleBtn" onclick="toggleAccessibilityPanel()" title="Accessibility Options">
+                    <i class="fas fa-universal-access"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Enhanced Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-background">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">Mental Health Matters</div>
+                <h1 class="hero-title">Your Journey to Wellness Starts Here</h1>
+                <p class="hero-subtitle">Discover a compassionate community where you can find support, share your story, and build resilience. You are stronger than you think.</p>
+                <div class="hero-buttons">
+                    <a href="#find-support" class="btn btn-primary btn-large">
+                        <i class="fas fa-heart"></i> Get Started
+                    </a>
+                    <a href="live-therapists.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-video"></i> Talk to a Therapist
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Active Members</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support Available</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">User Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-illustration">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inspiring Quote Section -->
+        <section class="quote-section" id="inspiration">
+            <div class="container">
+                <div class="quote-container">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote class="quote-text">
+                        "Mental health is not a destination, but a process. It's about how you drive, not where you're going."
+                    </blockquote>
+                    <cite class="quote-author">— Noam Shpancer, PhD</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Daily Affirmation -->
+        <section class="affirmation-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Daily Affirmation</h2>
+                    <p class="section-subtitle">Start your day with positive self-talk</p>
+                </div>
+                <div class="affirmation-card" id="dailyAffirmation">
+                    <div class="affirmation-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="affirmation-content">
+                        <p id="affirmationText">Loading your daily affirmation...</p>
+                        <div class="affirmation-actions">
+                            <button class="btn btn-primary" onclick="getNewAffirmation()">
+                                <i class="fas fa-sync-alt"></i> New Affirmation
+                            </button>
+                            <button class="btn btn-secondary" onclick="shareAffirmation()">
+                                <i class="fas fa-share"></i> Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="container">
+                <h2>How We Support You</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community Support</h3>
+                        <p>Connect with others who understand your journey in a safe, supportive environment.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Mood Tracking</h3>
+                        <p>Monitor your emotional well-being with our easy-to-use mood tracking tools.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Resources</h3>
+                        <p>Access curated articles, guides, and professional resources for mental wellness.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Anonymous Sharing</h3>
+                        <p>Share your thoughts and experiences anonymously without fear of judgment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions" id="find-support">
+            <div class="container">
+                <h2>Quick Support Options</h2>
+                <div class="actions-grid">
+                    <a href="mood-tracker.html" class="action-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>Track Your Mood</h3>
+                        <p>Log how you're feeling today</p>
+                    </a>
+                    <a href="resources.html" class="action-card">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Browse Resources</h3>
+                        <p>Find helpful articles and guides</p>
+                    </a>
+                    <a href="community.html" class="action-card">
+                        <i class="fas fa-comments"></i>
+                        <h3>Join Discussion</h3>
+                        <p>Connect with the community</p>
+                    </a>
+                    <a href="contact.html" class="action-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Reach Out</h3>
+                        <p>Send us a message</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Call to Action Section -->
+        <section class="cta" id="join-now">
+            <div class="cta-background">
+                <div class="cta-overlay"></div>
+            </div>
+            <div class="container">
+                <div class="cta-content">
+                    <div class="cta-badge">Join Our Community</div>
+                    <h2>Take the First Step Toward Healing</h2>
+                    <p class="cta-subtitle">Your mental health journey deserves support, understanding, and compassion. Join thousands who have found hope and healing through our community.</p>
+                    <div class="cta-buttons">
+                        <a href="community.html" class="btn btn-primary btn-xlarge">
+                            <i class="fas fa-users"></i> Join Free Today
+                        </a>
+                        <a href="live-therapists.html" class="btn btn-secondary btn-xlarge">
+                            <i class="fas fa-calendar-check"></i> Book a Session
+                        </a>
+                    </div>
+                    <div class="cta-features">
+                        <div class="cta-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>100% Confidential</span>
+                        </div>
+                        <div class="cta-feature">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>Free to Join</span>
+                        </div>
+                        <div class="cta-feature">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Available 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mental Health Champion</h3>
+                    <p>Building a supportive community for mental wellness and recovery.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" onclick="toggleCrisisSupport()">Crisis Support</a></li>
+                        <li><a href="resources.html">Professional Help</a></li>
+                        <li><a href="resources.html">Self-Care Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mental Health Champion. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript Files -->
+    <script src="js/navigation.js"></script>
+    <script src="js/themeToggle.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/formValidation.js"></script>
+    <script src="js/affirmations.js"></script>
+    <script src="js/crisisSupport.js"></script>
+    <script src="js/moodTracker.js"></script>
+    <script src="js/community.js"></script>
+    <script src="js/backToTop.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

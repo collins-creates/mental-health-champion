@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Start Routine Issue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="js/crisisSupport.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .debug-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .debug-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .debug-btn:hover {
+            background: #357abd;
+        }
+        .console-output {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-container">
+        <h1>Debug Start Routine Issue</h1>
+        
+        <div class="test-section">
+            <h3>Step 1: Test Crisis Support Manager</h3>
+            <button class="debug-btn" onclick="testCrisisSupportManager()">Test Crisis Support Manager</button>
+            <div id="manager-test-result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Step 2: Open Self-Care Routine Modal</h3>
+            <button class="debug-btn" onclick="openSelfCareModal()">Open Self-Care Modal</button>
+            <button class="debug-btn" onclick="autoSelectAndTest()">Auto-Select & Test</button>
+            <div id="modal-test-result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Step 3: Console Output</h3>
+            <div class="console-output" id="console-output">Console output will appear here...</div>
+            <button class="debug-btn" onclick="clearConsole()">Clear Console</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>Step 4: Manual Test</h3>
+            <p>After opening the modal above, manually:</p>
+            <ol>
+                <li>Select a lifestyle (Busy Professional, Moderate Schedule, or Relaxed Lifestyle)</li>
+                <li>Select at least one focus area (Stress Relief, Energy Boost, etc.)</li>
+                <li>Click "Start Routine" button</li>
+                <li>Check console output for debugging information</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Override console.log to capture output
+        const originalLog = console.log;
+        const originalError = console.error;
+        const consoleOutput = document.getElementById('console-output');
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const message = args.map(arg => 
+                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+            ).join(' ');
+            consoleOutput.textContent += '[LOG] ' + message + '\n';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            const message = args.map(arg => 
+                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+            ).join(' ');
+            consoleOutput.textContent += '[ERROR] ' + message + '\n';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        };
+        
+        function clearConsole() {
+            consoleOutput.textContent = '';
+        }
+        
+        function showResult(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="${type}">${message}</div>`;
+        }
+        
+        function testCrisisSupportManager() {
+            console.log('=== Testing Crisis Support Manager ===');
+            
+            if (window.crisisSupportManager) {
+                showResult('manager-test-result', '✓ Crisis Support Manager is initialized!', 'success');
+                console.log('Crisis Support Manager found:', window.crisisSupportManager);
+                
+                // Test key methods
+                const methods = ['showSelfCareRoutine', 'startSelfCareRoutine', 'showRoutineProgress', 'generateRoutine'];
+                methods.forEach(method => {
+                    if (typeof window.crisisSupportManager[method] === 'function') {
+                        console.log(`✓ ${method} method exists`);
+                    } else {
+                        console.error(`✗ ${method} method missing`);
+                    }
+                });
+            } else {
+                showResult('manager-test-result', '✗ Crisis Support Manager NOT found!', 'error');
+                console.error('Crisis Support Manager not found');
+            }
+            
+            console.log('=== End Test ===');
+        }
+        
+        function openSelfCareModal() {
+            console.log('=== Opening Self-Care Modal ===');
+            
+            if (window.crisisSupportManager) {
+                try {
+                    window.crisisSupportManager.showSelfCareRoutine();
+                    showResult('modal-test-result', '✓ Self-Care Modal opened successfully!', 'success');
+                    console.log('Self-Care Modal opened');
+                } catch (error) {
+                    showResult('modal-test-result', `✗ Error opening modal: ${error.message}`, 'error');
+                    console.error('Error opening modal:', error);
+                }
+            } else {
+                showResult('modal-test-result', '✗ Crisis Support Manager not available!', 'error');
+            }
+            
+            console.log('=== End Modal Opening ===');
+        }
+        
+        function autoSelectAndTest() {
+            console.log('=== Auto-Select and Test ===');
+            
+            if (!window.crisisSupportManager) {
+                showResult('modal-test-result', '✗ Crisis Support Manager not available!', 'error');
+                return;
+            }
+            
+            try {
+                // Open modal first
+                window.crisisSupportManager.showSelfCareRoutine();
+                console.log('Modal opened');
+                
+                // Wait a bit for modal to be ready, then auto-select
+                setTimeout(() => {
+                    console.log('Auto-selecting options...');
+                    
+                    // Auto-select lifestyle
+                    window.crisisSupportManager.selectedLifestyle = 'moderate';
+                    console.log('Selected lifestyle: moderate');
+                    
+                    // Auto-select focus areas
+                    window.crisisSupportManager.selectedFocus = ['stress', 'energy'];
+                    console.log('Selected focus: stress, energy');
+                    
+                    // Update preview
+                    window.crisisSupportManager.updateRoutinePreview();
+                    console.log('Updated routine preview');
+                    
+                    // Generate and show routine
+                    const routine = window.crisisSupportManager.generateRoutine();
+                    console.log('Generated routine:', routine);
+                    
+                    if (routine && routine.length > 0) {
+                        showResult('modal-test-result', '✓ Auto-selection successful! Routine generated with ' + routine.length + ' steps.', 'success');
+                        
+                        // Test start routine
+                        setTimeout(() => {
+                            console.log('Testing start routine...');
+                            window.crisisSupportManager.startSelfCareRoutine();
+                        }, 1000);
+                    } else {
+                        showResult('modal-test-result', '✗ Routine generation failed!', 'error');
+                    }
+                }, 500);
+                
+            } catch (error) {
+                showResult('modal-test-result', `✗ Auto-select error: ${error.message}`, 'error');
+                console.error('Auto-select error:', error);
+            }
+            
+            console.log('=== End Auto-Select ===');
+        }
+        
+        // Auto-test on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                console.log('Page loaded. Ready for testing.');
+                showResult('manager-test-result', 'Page loaded. Click "Test Crisis Support Manager" to begin.', 'info');
+            }, 100);
+        });
+    </script>
+</body>
+</html>

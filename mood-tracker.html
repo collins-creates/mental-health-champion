@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track your daily moods and visualize your mental health progress">
+    <title>Mood Tracker - Mental Health Champion</title>
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4a90e2">
+</head>
+<body>
+    <!-- Crisis Support Button -->
+    <div class="crisis-support" id="crisisSupport">
+        <button class="crisis-btn" onclick="toggleCrisisSupport()">
+            <i class="fas fa-phone-alt"></i> Crisis Support
+        </button>
+        <div class="crisis-dropdown" id="crisisDropdown">
+            <h3>Emergency Resources</h3>
+            <div class="hotline-item">
+                <strong>National Suicide Prevention Lifeline:</strong><br>
+                <a href="tel:988">988</a> or <a href="tel:1-800-273-8255">1-800-273-8255</a>
+            </div>
+            <div class="hotline-item">
+                <strong>Crisis Text Line:</strong><br>
+                Text HOME to <a href="sms:741741">741741</a>
+            </div>
+            <div class="hotline-item">
+                <strong>Trevor Project (LGBTQ+):</strong><br>
+                <a href="tel:1-866-488-7386">1-866-488-7386</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Mental Health Champion</span>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="resources.html" class="nav-link">Resources</a></li>
+                <li><a href="community.html" class="nav-link">Community</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="mood-tracker.html" class="nav-link active">Mood Tracker</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="font-resize" onclick="increaseFontSize()">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="font-resize" onclick="decreaseFontSize()">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="text-to-speech" onclick="readPage()">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button class="accessibility-toggle-btn" id="accessibilityToggleBtn" onclick="toggleAccessibilityPanel()" title="Accessibility Options">
+                    <i class="fas fa-universal-access"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Mood Tracker</h1>
+                <p>Monitor your emotional well-being and track your mental health journey</p>
+            </div>
+        </section>
+
+        <!-- Mood Entry Section -->
+        <section class="mood-entry">
+            <div class="container">
+                <div class="mood-form-card">
+                    <h2>How are you feeling today?</h2>
+                    <p>Take a moment to check in with yourself and log your current mood.</p>
+                    
+                    <form id="moodForm">
+                        <div class="mood-selector">
+                            <label>Select your mood:</label>
+                            <div class="mood-options">
+                                <div class="mood-option" data-mood="very-sad" onclick="selectMood('very-sad')">
+                                    <i class="fas fa-sad-tear"></i>
+                                    <span>Very Sad</span>
+                                </div>
+                                <div class="mood-option" data-mood="sad" onclick="selectMood('sad')">
+                                    <i class="fas fa-frown"></i>
+                                    <span>Sad</span>
+                                </div>
+                                <div class="mood-option" data-mood="neutral" onclick="selectMood('neutral')">
+                                    <i class="fas fa-meh"></i>
+                                    <span>Neutral</span>
+                                </div>
+                                <div class="mood-option" data-mood="happy" onclick="selectMood('happy')">
+                                    <i class="fas fa-smile"></i>
+                                    <span>Happy</span>
+                                </div>
+                                <div class="mood-option" data-mood="very-happy" onclick="selectMood('very-happy')">
+                                    <i class="fas fa-grin-stars"></i>
+                                    <span>Very Happy</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="moodNote">Add a note (optional):</label>
+                            <textarea id="moodNote" rows="3" placeholder="What's contributing to how you're feeling today?"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="moodFactors">Factors affecting your mood:</label>
+                            <div class="factors-grid">
+                                <label class="factor-checkbox">
+                                    <input type="checkbox" name="factors" value="sleep">
+                                    <i class="fas fa-bed"></i>
+                                    <span>Sleep</span>
+                                </label>
+                                <label class="factor-checkbox">
+                                    <input type="checkbox" name="factors" value="exercise">
+                                    <i class="fas fa-running"></i>
+                                    <span>Exercise</span>
+                                </label>
+                                <label class="factor-checkbox">
+                                    <input type="checkbox" name="factors" value="nutrition">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Nutrition</span>
+                                </label>
+                                <label class="factor-checkbox">
+                                    <input type="checkbox" name="factors" value="stress">
+                                    <i class="fas fa-brain"></i>
+                                    <span>Stress</span>
+                                </label>
+                                <label class="factor-checkbox">
+                                    <input type="checkbox" name="factors" value="social">
+                                    <i class="fas fa-users"></i>
+                                    <span>Social</span>
+                                </label>
+                                <label class="factor-checkbox">
+                                    <input type="checkbox" name="factors" value="work">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Work</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mood-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Log Mood
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="clearMoodForm()">
+                                <i class="fas fa-times"></i> Clear
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mood Statistics -->
+        <section class="mood-stats">
+            <div class="container">
+                <h2>Your Mood Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="todayMood">Not logged</h3>
+                            <p>Today's Mood</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="averageMood">-</h3>
+                            <p>7-Day Average</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="streakDays">0</h3>
+                            <p>Day Streak</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalEntries">0</h3>
+                            <p>Total Entries</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mood Chart -->
+        <section class="mood-chart">
+            <div class="container">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Mood Trends</h2>
+                        <div class="chart-controls">
+                            <button class="chart-btn active" onclick="showChart('7days')">7 Days</button>
+                            <button class="chart-btn" onclick="showChart('30days')">30 Days</button>
+                            <button class="chart-btn" onclick="showChart('all')">All Time</button>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="moodChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Entries -->
+        <section class="recent-entries">
+            <div class="container">
+                <div class="entries-header">
+                    <h2>Recent Mood Entries</h2>
+                    <button class="btn btn-small" onclick="exportMoodData()">
+                        <i class="fas fa-download"></i> Export Data
+                    </button>
+                </div>
+                <div class="entries-container" id="entriesContainer">
+                    <!-- Mood entries will be dynamically loaded here -->
+                    <div class="no-entries" id="noEntries">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>No mood entries yet</h3>
+                        <p>Start tracking your mood by logging how you're feeling today!</p>
+                        <button class="btn btn-primary" onclick="document.getElementById('moodForm').scrollIntoView({behavior: 'smooth'})">
+                            Log First Mood
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights Section -->
+        <section class="insights-section">
+            <div class="container">
+                <h2>Mood Insights</h2>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <div class="insight-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Patterns & Trends</h3>
+                        <p id="patternsText">Log more entries to discover patterns in your mood.</p>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Top Factors</h3>
+                        <div id="topFactors">
+                            <p>Track factors to see what influences your mood most.</p>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Achievements</h3>
+                        <div id="achievements">
+                            <p>Keep logging to unlock achievements!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section class="tips-section">
+            <div class="container">
+                <h2>Mood-Boosting Tips</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3>Get Outside</h3>
+                        <p>Spend time in nature to boost your mood and reduce stress.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Practice Gratitude</h3>
+                        <p>Write down three things you're grateful for each day.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Connect with Others</h3>
+                        <p>Reach out to friends or family for social support.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Move Your Body</h3>
+                        <p>Even light exercise can significantly improve your mood.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mental Health Champion</h3>
+                    <p>Building a supportive community for mental wellness and recovery.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" onclick="toggleCrisisSupport()">Crisis Support</a></li>
+                        <li><a href="resources.html">Professional Help</a></li>
+                        <li><a href="resources.html">Self-Care Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mental Health Champion. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/navigation.js"></script>
+    <script src="js/themeToggle.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/crisisSupport.js"></script>
+    <script src="js/moodTracker.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

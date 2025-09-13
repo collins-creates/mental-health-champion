@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Self-Care Routine Function</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="js/crisisSupport.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .test-btn:hover {
+            background: #357abd;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Self-Care Routine Functionality Test</h1>
+        
+        <button class="test-btn" onclick="testCrisisSupportManager()">Test Crisis Support Manager</button>
+        <button class="test-btn" onclick="testSelfCareRoutine()">Test Self-Care Routine</button>
+        <button class="test-btn" onclick="testRoutineGeneration()">Test Routine Generation</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function showResult(message, type = 'info') {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `<div class="result ${type}">${message}</div>`;
+        }
+
+        function testCrisisSupportManager() {
+            if (window.crisisSupportManager) {
+                showResult('✓ Crisis Support Manager is properly initialized!', 'success');
+                
+                // Test if self-care routine method exists
+                if (typeof window.crisisSupportManager.showSelfCareRoutine === 'function') {
+                    showResult('✓ showSelfCareRoutine method is available!', 'success');
+                } else {
+                    showResult('✗ showSelfCareRoutine method is NOT available!', 'error');
+                }
+                
+                // Test other key methods
+                const methods = ['createSelfCareRoutineModal', 'generateRoutine', 'selectLifestyle', 'updateFocus'];
+                methods.forEach(method => {
+                    if (typeof window.crisisSupportManager[method] === 'function') {
+                        showResult(`✓ ${method} method is available!`, 'success');
+                    } else {
+                        showResult(`✗ ${method} method is NOT available!`, 'error');
+                    }
+                });
+            } else {
+                showResult('✗ Crisis Support Manager is NOT initialized!', 'error');
+            }
+        }
+
+        function testSelfCareRoutine() {
+            if (!window.crisisSupportManager) {
+                showResult('✗ Crisis Support Manager is NOT initialized!', 'error');
+                return;
+            }
+
+            try {
+                // Test modal creation
+                window.crisisSupportManager.showSelfCareRoutine();
+                showResult('✓ Self-care routine modal opened successfully!', 'success');
+            } catch (error) {
+                showResult(`✗ Error opening self-care routine modal: ${error.message}`, 'error');
+            }
+        }
+
+        function testRoutineGeneration() {
+            if (!window.crisisSupportManager) {
+                showResult('✗ Crisis Support Manager is NOT initialized!', 'error');
+                return;
+            }
+
+            try {
+                // Set test values
+                window.crisisSupportManager.selectedLifestyle = 'moderate';
+                window.crisisSupportManager.selectedFocus = ['stress', 'energy'];
+                
+                // Generate routine
+                const routine = window.crisisSupportManager.generateRoutine();
+                
+                if (Array.isArray(routine) && routine.length > 0) {
+                    showResult(`✓ Routine generated successfully with ${routine.length} steps!`, 'success');
+                    
+                    // Display routine details
+                    let routineDetails = '<h4>Generated Routine:</h4><ul>';
+                    routine.forEach((step, index) => {
+                        routineDetails += `<li><strong>${step.title}</strong> - ${step.description} (${step.duration})</li>`;
+                    });
+                    routineDetails += '</ul>';
+                    showResult(routineDetails, 'info');
+                } else {
+                    showResult('✗ Routine generation failed or returned empty array!', 'error');
+                }
+            } catch (error) {
+                showResult(`✗ Error generating routine: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-test after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showResult('Test page loaded. Click the test buttons to verify functionality.', 'info');
+            }, 100);
+        });
+    </script>
+</body>
+</html>

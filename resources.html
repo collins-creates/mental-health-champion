@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Access mental health resources, articles, hotlines, and self-care tips">
+    <title>Resources - Mental Health Champion</title>
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4a90e2">
+</head>
+<body>
+    <!-- Crisis Support Button -->
+    <div class="crisis-support" id="crisisSupport">
+        <button class="crisis-btn" onclick="toggleCrisisSupport()">
+            <i class="fas fa-phone-alt"></i> Crisis Support
+        </button>
+        <div class="crisis-dropdown" id="crisisDropdown">
+            <h3>Emergency Resources</h3>
+            <div class="hotline-item">
+                <strong>National Suicide Prevention Lifeline:</strong><br>
+                <a href="tel:988">988</a> or <a href="tel:1-800-273-8255">1-800-273-8255</a>
+            </div>
+            <div class="hotline-item">
+                <strong>Crisis Text Line:</strong><br>
+                Text HOME to <a href="sms:741741">741741</a>
+            </div>
+            <div class="hotline-item">
+                <strong>Trevor Project (LGBTQ+):</strong><br>
+                <a href="tel:1-866-488-7386">1-866-488-7386</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Mental Health Champion</span>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="resources.html" class="nav-link active">Resources</a></li>
+                <li><a href="community.html" class="nav-link">Community</a></li>
+                <li><a href="live-therapists.html" class="nav-link">Live Therapists</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="mood-tracker.html" class="nav-link">Mood Tracker</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="font-resize" onclick="increaseFontSize()">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="font-resize" onclick="decreaseFontSize()">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="text-to-speech" onclick="readPage()">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button class="accessibility-toggle-btn" id="accessibilityToggleBtn" onclick="toggleAccessibilityPanel()" title="Accessibility Options">
+                    <i class="fas fa-universal-access"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Mental Health Resources</h1>
+                <p>Find support, information, and tools for your mental wellness journey</p>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="container">
+                <div class="filter-controls">
+                    <h3>Filter Resources</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all" onclick="filterResources('all')">All Resources</button>
+                        <button class="filter-btn" data-filter="articles" onclick="filterResources('articles')">Articles</button>
+                        <button class="filter-btn" data-filter="hotlines" onclick="filterResources('hotlines')">Hotlines</button>
+                        <button class="filter-btn" data-filter="self-care" onclick="filterResources('self-care')">Self-Care</button>
+                        <button class="filter-btn" data-filter="meditation" onclick="filterResources('meditation')">Meditation</button>
+                        <button class="filter-btn" data-filter="therapy" onclick="filterResources('therapy')">Therapy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Grid -->
+        <section class="resources-section">
+            <div class="container">
+                <div class="resources-grid" id="resourcesGrid">
+                    <!-- Articles -->
+                    <div class="resource-card" data-category="articles">
+                        <div class="resource-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3>Understanding Anxiety</h3>
+                        <p>Comprehensive guide to recognizing and managing anxiety symptoms in daily life.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Article</span>
+                            <span class="resource-read-time">5 min read</span>
+                        </div>
+                        <a href="articles/understanding-anxiety.html" class="btn btn-small">Read More</a>
+                    </div>
+
+                    <div class="resource-card" data-category="articles">
+                        <div class="resource-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3>Depression: Signs and Support</h3>
+                        <p>Learn to identify depression symptoms and discover effective coping strategies.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Article</span>
+                            <span class="resource-read-time">8 min read</span>
+                        </div>
+                        <a href="articles/understanding-depression.html" class="btn btn-small">Read More</a>
+                    </div>
+
+                    <div class="resource-card" data-category="articles">
+                        <div class="resource-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3>Building Resilience</h3>
+                        <p>Practical strategies for developing mental resilience and emotional strength.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Article</span>
+                            <span class="resource-read-time">6 min read</span>
+                        </div>
+                        <a href="articles/stress-management.html" class="btn btn-small">Read More</a>
+                    </div>
+
+                    <div class="resource-card" data-category="meditation">
+                        <div class="resource-icon">
+                            <i class="fas fa-om"></i>
+                        </div>
+                        <h3>Mindfulness & Meditation</h3>
+                        <p>Learn mindfulness techniques and meditation practices for inner peace and mental clarity.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Article</span>
+                            <span class="resource-read-time">15 min read</span>
+                        </div>
+                        <a href="articles/mindfulness-meditation.html" class="btn btn-small">Read More</a>
+                    </div>
+
+                    <!-- Hotlines -->
+                    <div class="resource-card" data-category="hotlines">
+                        <div class="resource-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>National Crisis Hotlines</h3>
+                        <p>24/7 support lines for immediate help during mental health crises.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Hotline</span>
+                            <span class="resource-availability">Available 24/7</span>
+                        </div>
+                        <a href="#" onclick="toggleCrisisSupport()" class="btn btn-small">View Numbers</a>
+                    </div>
+
+                    <div class="resource-card" data-category="hotlines">
+                        <div class="resource-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Text Support Services</h3>
+                        <p>Confidential text-based support for when you need to talk but can't call.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Text Support</span>
+                            <span class="resource-availability">Available 24/7</span>
+                        </div>
+                        <a href="#" onclick="toggleCrisisSupport()" class="btn btn-small">Get Help</a>
+                    </div>
+
+                    <!-- Self-Care -->
+                    <div class="resource-card" data-category="self-care">
+                        <div class="resource-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>Daily Self-Care Routine</h3>
+                        <p>Build a personalized self-care routine that fits your lifestyle and needs.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Self-Care</span>
+                            <span class="resource-difficulty">Beginner Friendly</span>
+                        </div>
+                        <a href="#" class="btn btn-small" onclick="if(window.crisisSupportManager) { window.crisisSupportManager.showSelfCareRoutine(); } else { console.error('Crisis support manager not available'); }">Start Routine</a>
+                    </div>
+
+                    <div class="resource-card" data-category="self-care">
+                        <div class="resource-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <h3>Sleep Hygiene Guide</h3>
+                        <p>Improve your sleep quality with evidence-based sleep hygiene practices.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Self-Care</span>
+                            <span class="resource-difficulty">Easy to Implement</span>
+                        </div>
+                        <a href="articles/sleep-hygiene.html" class="btn btn-small">Learn More</a>
+                    </div>
+
+                    <div class="resource-card" data-category="self-care">
+                        <div class="resource-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Nutrition and Mental Health</h3>
+                        <p>Discover how diet impacts your mood and mental well-being.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Self-Care</span>
+                            <span class="resource-difficulty">Moderate</span>
+                        </div>
+                        <a href="articles/nutrition-and-mental-health.html" class="btn btn-small">Read Guide</a>
+                    </div>
+
+                    <!-- Meditation -->
+                    <div class="resource-card" data-category="meditation">
+                        <div class="resource-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Mindfulness Meditation</h3>
+                        <p>Learn basic mindfulness techniques to reduce stress and increase awareness.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Meditation</span>
+                            <span class="resource-duration">10-15 minutes</span>
+                        </div>
+                        <a href="#" class="btn btn-small" onclick="if(window.crisisSupportManager) { window.crisisSupportManager.showMindfulnessMeditation(); } else { console.error('Crisis support manager not available'); }">Start Practice</a>
+                    </div>
+
+                    <div class="resource-card" data-category="meditation">
+                        <div class="resource-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3>Breathing Exercises</h3>
+                        <p>Simple breathing techniques to calm your mind and reduce anxiety quickly.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Meditation</span>
+                            <span class="resource-duration">5-10 minutes</span>
+                        </div>
+                        <a href="#" class="btn btn-small" onclick="if(window.crisisSupportManager) { window.crisisSupportManager.showBreathingExercise(); } else { console.error('Crisis support manager not available'); }">Try Now</a>
+                    </div>
+
+                    <!-- Therapy -->
+                    <div class="resource-card" data-category="therapy">
+                        <div class="resource-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>Finding a Therapist</h3>
+                        <p>Step-by-step guide to finding the right mental health professional for you.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Therapy Guide</span>
+                            <span class="resource-complexity">Comprehensive</span>
+                        </div>
+                        <a href="#" class="btn btn-small">Find Help</a>
+                    </div>
+
+                    <div class="resource-card" data-category="therapy">
+                        <div class="resource-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Online Therapy Options</h3>
+                        <p>Explore teletherapy and online counseling services for convenient support.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Therapy</span>
+                            <span class="resource-accessibility">Remote Access</span>
+                        </div>
+                        <a href="#" class="btn btn-small">Explore Options</a>
+                    </div>
+
+                    <div class="resource-card" data-category="therapy">
+                        <div class="resource-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Group Therapy Benefits</h3>
+                        <p>Learn about the advantages of group therapy and finding support communities.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Therapy</span>
+                            <span class="resource-format">Group Setting</span>
+                        </div>
+                        <a href="#" class="btn btn-small">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Resources Section -->
+        <section class="emergency-resources">
+            <div class="container">
+                <h2>Need Immediate Help?</h2>
+                <p>If you're in crisis or having thoughts of suicide, please reach out for help immediately.</p>
+                <div class="emergency-actions">
+                    <button class="btn btn-emergency" onclick="toggleCrisisSupport()">
+                        <i class="fas fa-phone-alt"></i> Call Crisis Support
+                    </button>
+                    <button class="btn btn-emergency" onclick="window.location.href='sms:741741?body=HOME'">
+                        <i class="fas fa-comments"></i> Text Crisis Line
+                    </button>
+                    <a href="https://988lifeline.org/chat/" target="_blank" class="btn btn-emergency">
+                        <i class="fas fa-comment-dots"></i> Chat Online
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resource Request Section -->
+        <section class="resource-request">
+            <div class="container">
+                <h2>Can't Find What You Need?</h2>
+                <p>We're constantly updating our resources. Let us know what would be helpful for you.</p>
+                <form class="resource-request-form" id="resourceRequestForm">
+                    <div class="form-group">
+                        <label for="resourceType">Resource Type:</label>
+                        <select id="resourceType" name="resourceType" required>
+                            <option value="">Select a type</option>
+                            <option value="article">Article</option>
+                            <option value="guide">Guide</option>
+                            <option value="tool">Tool/Exercise</option>
+                            <option value="video">Video Resource</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="resourceTopic">Topic:</label>
+                        <input type="text" id="resourceTopic" name="resourceTopic" placeholder="What topic would you like resources for?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="resourceDescription">Description:</label>
+                        <textarea id="resourceDescription" name="resourceDescription" rows="4" placeholder="Please describe what kind of resource would be helpful for you..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mental Health Champion</h3>
+                    <p>Building a supportive community for mental wellness and recovery.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" onclick="toggleCrisisSupport()">Crisis Support</a></li>
+                        <li><a href="resources.html">Professional Help</a></li>
+                        <li><a href="resources.html">Self-Care Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mental Health Champion. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/navigation.js"></script>
+    <script src="js/themeToggle.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/crisisSupport.js"></script>
+    <script src="js/resources.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

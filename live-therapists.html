@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Therapist Sessions - Mental Health Champion</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <i class="fas fa-heart"></i>
+                    Mental Health Champion
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="community.html" class="nav-link">Community</a>
+                <a href="live-therapists.html" class="nav-link active">Live Therapists</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <button class="accessibility-toggle-btn" id="accessibilityToggleBtn" onclick="toggleAccessibilityPanel()" title="Accessibility Options">
+                <i class="fas fa-universal-access"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Live Therapist Sessions</h1>
+            <p>Connect with licensed mental health professionals in real-time for immediate support and guidance.</p>
+            <button class="btn btn-primary" onclick="scrollToTherapists()">
+                <i class="fas fa-video"></i> View Available Therapists
+            </button>
+        </div>
+    </section>
+
+    <!-- Live Sessions Info -->
+    <section class="live-sessions-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure & Confidential</h3>
+                    <p>All sessions are encrypted and completely confidential. Your privacy is our top priority.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>24/7 Availability</h3>
+                    <p>Access licensed therapists around the clock. Help is available when you need it most.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Group & Individual</h3>
+                    <p>Choose between private one-on-one sessions or supportive group therapy options.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Any Device</h3>
+                    <p>Connect from your computer, tablet, or smartphone. Therapy wherever you are.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <h2>Find Your Perfect Match</h2>
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="specialtyFilter">Specialty:</label>
+                    <select id="specialtyFilter" onchange="filterTherapists()">
+                        <option value="all">All Specialties</option>
+                        <option value="anxiety">Anxiety & Stress</option>
+                        <option value="depression">Depression</option>
+                        <option value="trauma">Trauma & PTSD</option>
+                        <option value="relationships">Relationships</option>
+                        <option value="addiction">Addiction</option>
+                        <option value="grief">Grief & Loss</option>
+                        <option value="lgbtq">LGBTQ+</option>
+                        <option value="couples">Couples Therapy</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="availabilityFilter">Availability:</label>
+                    <select id="availabilityFilter" onchange="filterTherapists()">
+                        <option value="all">All Times</option>
+                        <option value="now">Available Now</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sessionTypeFilter">Session Type:</label>
+                    <select id="sessionTypeFilter" onchange="filterTherapists()">
+                        <option value="all">All Types</option>
+                        <option value="individual">Individual</option>
+                        <option value="group">Group</option>
+                        <option value="couples">Couples</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="languageFilter">Language:</label>
+                    <select id="languageFilter" onchange="filterTherapists()">
+                        <option value="all">All Languages</option>
+                        <option value="english">English</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="french">French</option>
+                        <option value="german">German</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Therapists Grid -->
+    <section class="therapists-section" id="therapists-section">
+        <div class="container">
+            <h2>Live Therapist Sessions</h2>
+            <p class="session-description">Join our live therapy sessions with licensed mental health professionals. Click below to connect with available therapists.</p>
+            
+            <!-- Live Video Session -->
+            <div class="live-video-container">
+                <div class="video-header">
+                    <i class="fas fa-video"></i>
+                    <h3>Current Live Session</h3>
+                    <span class="live-indicator">
+                        <i class="fas fa-circle"></i> LIVE
+                    </span>
+                </div>
+                <div class="video-wrapper">
+                    <iframe width="931" height="524" src="https://www.youtube.com/embed/dEVUQjMNKXg" title="MENTAL HEALTH CHAMPION FIRST SESSION" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-controls">
+                    <button class="btn btn-primary" onclick="joinLiveSession()">
+                        <i class="fas fa-sign-in-alt"></i> Join Live Session
+                    </button>
+                    <button class="btn btn-secondary" onclick="scheduleSession()">
+                        <i class="fas fa-calendar-plus"></i> Schedule Session
+                    </button>
+                    <button class="btn btn-info" onclick="viewTherapistProfile()">
+                        <i class="fas fa-user-md"></i> View Therapist Profile
+                    </button>
+                </div>
+            </div>
+            
+            <div class="therapists-grid" id="therapists-grid">
+                <!-- Therapists will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Sessions -->
+    <section class="upcoming-sessions" id="sessions-section">
+        <div class="container">
+            <h2>Upcoming Group Sessions</h2>
+            <div class="sessions-grid" id="sessions-grid">
+                <!-- Group sessions will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How Live Therapy Works</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Browse Therapists</h3>
+                    <p>Explore our network of licensed mental health professionals and find someone who matches your needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Choose Session Type</h3>
+                    <p>Select between individual, couples, or group therapy sessions based on your preferences.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Schedule or Join Now</h3>
+                    <p>Book a future appointment or join an available therapist immediately for instant support.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Connect Securely</h3>
+                    <p>Join your session through our encrypted video platform for a confidential therapy experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <h2>Session Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Individual Session</h3>
+                    <div class="price">$75-150</div>
+                    <p>50-minute one-on-one therapy session with a licensed therapist.</p>
+                    <ul>
+                        <li>Personalized treatment plan</li>
+                        <li>Confidential video session</li>
+                        <li>Session notes available</li>
+                        <li>Flexible scheduling</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="bookIndividualSession(event)">Book Now</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Group Session</h3>
+                    <div class="price">$25-50</div>
+                    <p>60-minute group therapy session with 6-10 participants.</p>
+                    <ul>
+                        <li>Peer support and connection</li>
+                        <li>Professional facilitation</li>
+                        <li>Shared experiences</li>
+                        <li>Affordable option</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="bookGroupSession(event)">Join Group</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Couples Session</h3>
+                    <div class="price">$100-200</div>
+                    <p>60-minute couples therapy session for relationship support.</p>
+                    <ul>
+                        <li>Relationship counseling</li>
+                        <li>Communication skills</li>
+                        <li>Conflict resolution</li>
+                        <li>Partnership strengthening</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="bookCouplesSession(event)">Book Session</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down"></i>
+                        Are the therapists licensed?
+                    </h3>
+                    <div class="faq-content">
+                        <p>Yes, all therapists on our platform are licensed mental health professionals with verified credentials. We conduct thorough background checks and license verification for every therapist.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down"></i>
+                        Is my information confidential?
+                    </h3>
+                    <div class="faq-content">
+                        <p>Absolutely. All sessions are encrypted and completely confidential. We follow HIPAA guidelines and strict privacy protocols to protect your personal information and therapy sessions.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down"></i>
+                        What technology do I need?
+                    </h3>
+                    <div class="faq-content">
+                        <p>You need a device with a camera and microphone (computer, tablet, or smartphone), a stable internet connection, and a modern web browser. No software download is required.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down"></i>
+                        Can I use insurance?
+                    </h3>
+                    <div class="faq-content">
+                        <p>Many of our therapists accept insurance. You can check with individual therapists about their insurance policies. We also provide receipts for potential reimbursement.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down"></i>
+                        What if I need to cancel?
+                    </h3>
+                    <div class="faq-content">
+                        <p>You can cancel or reschedule sessions up to 24 hours before the appointment time without penalty. Late cancellations may be subject to the therapist's cancellation policy.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleFAQ(this)">
+                        <i class="fas fa-chevron-down"></i>
+                        How do I choose the right therapist?
+                    </h3>
+                    <div class="faq-content">
+                        <p>You can filter therapists by specialty, availability, language, and session type. Read their profiles, specialties, and approaches. Many therapists offer brief introductory consultations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Take the first step towards better mental health with professional support.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="scrollToTherapists()">
+                    <i class="fas fa-video"></i> Browse Therapists
+                </button>
+                <button class="btn btn-secondary" onclick="showEmergencyInfo()">
+                    <i class="fas fa-phone-alt"></i> Emergency Support
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mental Health Champion</h3>
+                    <p>Your trusted partner in mental wellness and support.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="live-therapists.html">Live Therapists</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="articles/understanding-anxiety.html">Understanding Anxiety</a></li>
+                        <li><a href="articles/mindfulness-meditation.html">Mindfulness & Meditation</a></li>
+                        <li><a href="articles/sleep-hygiene.html">Sleep Hygiene</a></li>
+                        <li><a href="articles/stress-management.html">Stress Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#" onclick="toggleCrisisSupport()">Crisis Support</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mental Health Champion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/navigation.js"></script>
+    <script src="js/crisisSupport.js"></script>
+    <script src="js/liveTherapists.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

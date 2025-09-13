@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-btn { 
+            background: #4a90e2; 
+            color: white; 
+            border: none; 
+            padding: 12px 24px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            margin: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Minimal Test</h1>
+    <button class="test-btn" onclick="testModal()">Test Modal</button>
+    
+    <script>
+        function testModal() {
+            console.log('Testing modal...');
+            
+            // Create a simple modal overlay
+            const modalOverlay = document.createElement('div');
+            modalOverlay.className = 'modal-overlay';
+            modalOverlay.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Test Modal</h3>
+                        <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>This is a test modal to check if the CSS is working.</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modalOverlay);
+            
+            // Show modal with animation
+            setTimeout(() => {
+                modalOverlay.classList.add('active');
+            }, 10);
+            
+            console.log('Modal created and shown');
+        }
+    </script>
+</body>
+</html>

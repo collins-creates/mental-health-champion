@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join our anonymous mental health community board and share your thoughts safely">
+    <title>Community - Mental Health Champion</title>
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4a90e2">
+</head>
+<body>
+    <!-- Crisis Support Button -->
+    <div class="crisis-support" id="crisisSupport">
+        <button class="crisis-btn" onclick="toggleCrisisSupport()">
+            <i class="fas fa-phone-alt"></i> Crisis Support
+        </button>
+        <div class="crisis-dropdown" id="crisisDropdown">
+            <h3>Emergency Resources</h3>
+            <div class="hotline-item">
+                <strong>National Suicide Prevention Lifeline:</strong><br>
+                <a href="tel:988">988</a> or <a href="tel:1-800-273-8255">1-800-273-8255</a>
+            </div>
+            <div class="hotline-item">
+                <strong>Crisis Text Line:</strong><br>
+                Text HOME to <a href="sms:741741">741741</a>
+            </div>
+            <div class="hotline-item">
+                <strong>Trevor Project (LGBTQ+):</strong><br>
+                <a href="tel:1-866-488-7386">1-866-488-7386</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Mental Health Champion</span>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="resources.html" class="nav-link">Resources</a></li>
+                <li><a href="community.html" class="nav-link active">Community</a></li>
+                <li><a href="live-therapists.html" class="nav-link">Live Therapists</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="mood-tracker.html" class="nav-link">Mood Tracker</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="font-resize" onclick="increaseFontSize()">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="font-resize" onclick="decreaseFontSize()">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="text-to-speech" onclick="readPage()">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button class="accessibility-toggle-btn" id="accessibilityToggleBtn" onclick="toggleAccessibilityPanel()" title="Accessibility Options">
+                    <i class="fas fa-universal-access"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Community Support</h1>
+                <p>Share your thoughts anonymously and connect with others who understand</p>
+            </div>
+        </section>
+
+        <!-- Community Guidelines -->
+        <section class="guidelines-section">
+            <div class="container">
+                <div class="guidelines-card">
+                    <h2><i class="fas fa-shield-alt"></i> Community Guidelines</h2>
+                    <div class="guidelines-list">
+                        <div class="guideline-item">
+                            <i class="fas fa-check"></i>
+                            <span>Be kind and supportive to all community members</span>
+                        </div>
+                        <div class="guideline-item">
+                            <i class="fas fa-check"></i>
+                            <span>Respect privacy and maintain anonymity</span>
+                        </div>
+                        <div class="guideline-item">
+                            <i class="fas fa-check"></i>
+                            <span>No judgment or criticism of others' experiences</span>
+                        </div>
+                        <div class="guideline-item">
+                            <i class="fas fa-check"></i>
+                            <span>Share responsibly and avoid triggering content</span>
+                        </div>
+                        <div class="guideline-item">
+                            <i class="fas fa-check"></i>
+                            <span>Seek professional help for serious mental health crises</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Post Creation -->
+        <section class="post-creation">
+            <div class="container">
+                <div class="post-form-card">
+                    <h2>Share Your Thoughts</h2>
+                    <form id="postForm">
+                        <div class="form-group">
+                            <label for="postCategory">Category:</label>
+                            <select id="postCategory" required>
+                                <option value="">Select a category</option>
+                                <option value="general">General Support</option>
+                                <option value="anxiety">Anxiety</option>
+                                <option value="depression">Depression</option>
+                                <option value="recovery">Recovery Journey</option>
+                                <option value="self-care">Self-Care Tips</option>
+                                <option value="gratitude">Gratitude</option>
+                                <option value="victory">Small Victories</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="postTitle">Title:</label>
+                            <input type="text" id="postTitle" placeholder="Give your post a title..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postContent">Your Message:</label>
+                            <textarea id="postContent" rows="6" placeholder="Share your thoughts, feelings, or experiences anonymously..." required></textarea>
+                        </div>
+                        <div class="post-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Share Post
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="clearPostForm()">
+                                <i class="fas fa-times"></i> Clear
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Posts -->
+        <section class="filter-posts">
+            <div class="container">
+                <div class="filter-controls">
+                    <h3>Filter Posts</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all" onclick="filterPosts('all')">All Posts</button>
+                        <button class="filter-btn" data-filter="general" onclick="filterPosts('general')">General</button>
+                        <button class="filter-btn" data-filter="anxiety" onclick="filterPosts('anxiety')">Anxiety</button>
+                        <button class="filter-btn" data-filter="depression" onclick="filterPosts('depression')">Depression</button>
+                        <button class="filter-btn" data-filter="recovery" onclick="filterPosts('recovery')">Recovery</button>
+                        <button class="filter-btn" data-filter="self-care" onclick="filterPosts('self-care')">Self-Care</button>
+                        <button class="filter-btn" data-filter="gratitude" onclick="filterPosts('gratitude')">Gratitude</button>
+                        <button class="filter-btn" data-filter="victory" onclick="filterPosts('victory')">Victories</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Posts Display -->
+        <section class="posts-display">
+            <div class="container">
+                <div class="posts-header">
+                    <h2>Community Posts</h2>
+                    <div class="posts-stats">
+                        <span id="totalPosts">0</span> posts shared
+                    </div>
+                </div>
+                <div class="posts-container" id="postsContainer">
+                    <!-- Posts will be dynamically loaded here -->
+                    <div class="no-posts" id="noPosts">
+                        <i class="fas fa-comments"></i>
+                        <h3>No posts yet</h3>
+                        <p>Be the first to share your thoughts with the community!</p>
+                        <button class="btn btn-primary" onclick="document.getElementById('postForm').scrollIntoView({behavior: 'smooth'})">
+                            Create First Post
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Resources -->
+        <section class="support-resources">
+            <div class="container">
+                <h2>Need Additional Support?</h2>
+                <div class="support-grid">
+                    <div class="support-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Crisis Support</h3>
+                        <p>24/7 emergency support for immediate help</p>
+                        <button class="btn btn-emergency" onclick="toggleCrisisSupport()">Get Help Now</button>
+                    </div>
+                    <div class="support-card">
+                        <i class="fas fa-user-md"></i>
+                        <h3>Professional Help</h3>
+                        <p>Find therapists and mental health professionals</p>
+                        <a href="resources.html" class="btn btn-primary">Find Resources</a>
+                    </div>
+                    <div class="support-card">
+                        <i class="fas fa-book"></i>
+                        <h3>Educational Materials</h3>
+                        <p>Learn more about mental health and wellness</p>
+                        <a href="resources.html" class="btn btn-primary">Browse Articles</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mental Health Champion</h3>
+                    <p>Building a supportive community for mental wellness and recovery.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" onclick="toggleCrisisSupport()">Crisis Support</a></li>
+                        <li><a href="resources.html">Professional Help</a></li>
+                        <li><a href="resources.html">Self-Care Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mental Health Champion. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/navigation.js"></script>
+    <script src="js/themeToggle.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/crisisSupport.js"></script>
+    <script src="js/community.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

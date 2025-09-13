@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how nutrition and diet impact mental health, mood, and overall well-being">
+    <title>Nutrition and Mental Health - Mental Health Champion</title>
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4a90e2">
+</head>
+<body>
+    <!-- Crisis Support Button -->
+    <div class="crisis-support" id="crisisSupport">
+        <button class="crisis-btn" onclick="toggleCrisisSupport()">
+            <i class="fas fa-phone-alt"></i> Crisis Support
+        </button>
+        <div class="crisis-dropdown" id="crisisDropdown">
+            <h3>Emergency Resources</h3>
+            <div class="hotline-item">
+                <strong>National Suicide Prevention Lifeline:</strong><br>
+                <a href="tel:988">988</a> or <a href="tel:1-800-273-8255">1-800-273-8255</a>
+            </div>
+            <div class="hotline-item">
+                <strong>Crisis Text Line:</strong><br>
+                Text HOME to <a href="sms:741741">741741</a>
+            </div>
+            <div class="hotline-item">
+                <strong>Trevor Project (LGBTQ+):</strong><br>
+                <a href="tel:1-866-488-7386">1-866-488-7386</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Mental Health Champion</span>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+                <li><a href="../resources.html" class="nav-link">Resources</a></li>
+                <li><a href="../community.html" class="nav-link">Community</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="font-resize" onclick="increaseFontSize()">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="font-resize" onclick="decreaseFontSize()">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="text-to-speech" onclick="readPage()">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Article Header -->
+        <article class="article-container">
+            <header class="article-header">
+                <div class="container">
+                    <div class="article-meta">
+                        <span class="article-category"><i class="fas fa-utensils"></i> Nutrition & Wellness</span>
+                        <span class="article-read-time"><i class="fas fa-clock"></i> 12 min read</span>
+                        <span class="article-date"><i class="fas fa-calendar"></i> Updated: September 2024</span>
+                    </div>
+                    <h1>Nutrition and Mental Health: The Gut-Brain Connection</h1>
+                    <p class="article-subtitle">Discover how the food you eat impacts your mood, cognitive function, and overall mental well-being</p>
+                </div>
+            </header>
+
+            <!-- Article Content -->
+            <div class="article-content">
+                <div class="container">
+                    <!-- Introduction -->
+                    <section class="article-section">
+                        <h2>The Food-Mood Connection</h2>
+                        <p>Have you ever noticed how certain foods make you feel energized and positive, while others leave you feeling sluggish or irritable? This isn't just in your head—there's a powerful scientific connection between what you eat and how you feel mentally and emotionally.</p>
+                        
+                        <p>The gut-brain axis is a complex communication network that links your digestive system with your central nervous system. What you eat directly affects the composition of your gut microbiome, which in turn influences your mood, stress levels, and even cognitive function.</p>
+
+                        <div class="info-box">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Did You Know?</h4>
+                            <p>Approximately 95% of your body's serotonin (the "feel-good" neurotransmitter) is produced in your gut, not your brain!</p>
+                        </div>
+                    </section>
+
+                    <!-- Key Nutrients -->
+                    <section class="article-section">
+                        <h2>Essential Nutrients for Mental Health</h2>
+                        
+                        <div class="nutrient-grid">
+                            <div class="nutrient-card">
+                                <div class="nutrient-icon">
+                                    <i class="fas fa-fish"></i>
+                                </div>
+                                <h3>Omega-3 Fatty Acids</h3>
+                                <p>These essential fats are crucial for brain health and have been shown to reduce symptoms of depression and anxiety.</p>
+                                <div class="nutrient-sources">
+                                    <h4>Best Sources:</h4>
+                                    <ul>
+                                        <li>Fatty fish (salmon, mackerel, sardines)</li>
+                                        <li>Walnuts and flaxseeds</li>
+                                        <li>Chia seeds</li>
+                                        <li>Algal oil supplements</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="nutrient-card">
+                                <div class="nutrient-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <h3>B Vitamins</h3>
+                                <p>B vitamins, particularly B6, B9 (folate), and B12, are essential for neurotransmitter production and mood regulation.</p>
+                                <div class="nutrient-sources">
+                                    <h4>Best Sources:</h4>
+                                    <ul>
+                                        <li>Leafy greens (spinach, kale)</li>
+                                        <li>Legumes and beans</li>
+                                        <li>Whole grains</li>
+                                        <li>Eggs and lean meats</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="nutrient-card">
+                                <div class="nutrient-icon">
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                                <h3>Vitamin D</h3>
+                                <p>Often called the "sunshine vitamin," Vitamin D receptors are found throughout the brain and play a role in mood regulation.</p>
+                                <div class="nutrient-sources">
+                                    <h4>Best Sources:</h4>
+                                    <ul>
+                                        <li>Sunlight exposure</li>
+                                        <li>Fortified dairy products</li>
+                                        <li>Fatty fish</li>
+                                        <li>Egg yolks</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="nutrient-card">
+                                <div class="nutrient-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h3>Magnesium</h3>
+                                <p>This mineral helps regulate stress responses and has calming effects on the nervous system.</p>
+                                <div class="nutrient-sources">
+                                    <h4>Best Sources:</h4>
+                                    <ul>
+                                        <li>Dark chocolate (70%+ cocoa)</li>
+                                        <li>Nuts and seeds</li>
+                                        <li>Leafy greens</li>
+                                        <li>Whole grains</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Gut Health -->
+                    <section class="article-section">
+                        <h2>The Gut Microbiome and Mental Health</h2>
+                        <p>Your gut is home to trillions of microorganisms that make up your microbiome. These tiny organisms play a massive role in your mental health through several mechanisms:</p>
+                        
+                        <div class="process-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Neurotransmitter Production</h4>
+                                    <p>Gut bacteria produce neurotransmitters like serotonin, dopamine, and GABA, which directly influence mood and anxiety levels.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Inflammation Regulation</h4>
+                                    <p>A healthy gut microbiome helps control inflammation throughout the body, including brain inflammation linked to depression and anxiety.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Vagus Nerve Communication</h4>
+                                    <p>The vagus nerve connects your gut and brain, allowing constant communication about your gut's state to influence your mental state.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="warning-box">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h4>Gut Health Warning Signs</h4>
+                            <p>If you experience frequent digestive issues, bloating, or irregular bowel movements alongside mood changes, your gut health might be affecting your mental well-being.</p>
+                        </div>
+                    </section>
+
+                    <!-- Foods to Embrace -->
+                    <section class="article-section">
+                        <h2>Mood-Boosting Foods to Embrace</h2>
+                        
+                        <div class="food-categories">
+                            <div class="food-category">
+                                <h3><i class="fas fa-leaf"></i> Fermented Foods</h3>
+                                <p>Rich in probiotics that support gut health and neurotransmitter production.</p>
+                                <ul>
+                                    <li>Yogurt with live cultures</li>
+                                    <li>Kefir</li>
+                                    <li>Sauerkraut and kimchi</li>
+                                    <li>Kombucha</li>
+                                    <li>Miso and tempeh</li>
+                                </ul>
+                            </div>
+
+                            <div class="food-category">
+                                <h3><i class="fas fa-apple-alt"></i> Colorful Fruits and Vegetables</h3>
+                                <p>Packed with antioxidants that protect brain cells from oxidative stress.</p>
+                                <ul>
+                                    <li>Berries (blueberries, strawberries)</li>
+                                    <li>Dark leafy greens</li>
+                                    <li>Colorful peppers</li>
+                                    <li>Carrots and sweet potatoes</li>
+                                    <li>Citrus fruits</li>
+                                </ul>
+                            </div>
+
+                            <div class="food-category">
+                                <h3><i class="fas fa-bread-slice"></i> Whole Grains</h3>
+                                <p>Provide steady energy and support serotonin production through tryptophan.</p>
+                                <ul>
+                                    <li>Oats and quinoa</li>
+                                    <li>Brown rice</li>
+                                    <li>Whole wheat bread</li>
+                                    <li>Barley and farro</li>
+                                </ul>
+                            </div>
+
+                            <div class="food-category">
+                                <h3><i class="fas fa-drumstick-bite"></i> Lean Proteins</h3>
+                                <p>Essential for neurotransmitter production and blood sugar stability.</p>
+                                <ul>
+                                    <li>Fish and seafood</li>
+                                    <li>Poultry</li>
+                                    <li>Beans and lentils</li>
+                                    <li>Tofu and tempeh</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Foods to Limit -->
+                    <section class="article-section">
+                        <h2>Foods That May Negatively Impact Mental Health</h2>
+                        
+                        <div class="foods-limit">
+                            <div class="limit-item">
+                                <h3><i class="fas fa-candy-cane"></i> Refined Sugars</h3>
+                                <p>Can cause blood sugar spikes and crashes, leading to mood swings and irritability. Also feeds harmful gut bacteria.</p>
+                                <div class="limit-alternatives">
+                                    <strong>Better choices:</strong> Fresh fruits, dark chocolate, honey in moderation
+                                </div>
+                            </div>
+
+                            <div class="limit-item">
+                                <h3><i class="fas fa-hamburger"></i> Processed Foods</h3>
+                                <p>Often contain artificial additives, preservatives, and unhealthy fats that can increase inflammation and negatively affect gut health.</p>
+                                <div class="limit-alternatives">
+                                    <strong>Better choices:</strong> Whole foods, home-cooked meals, fresh ingredients
+                                </div>
+                            </div>
+
+                            <div class="limit-item">
+                                <h3><i class="fas fa-coffee"></i> Excessive Caffeine</h3>
+                                <p>Can increase anxiety, disrupt sleep patterns, and lead to dependency and withdrawal symptoms.</p>
+                                <div class="limit-alternatives">
+                                    <strong>Better choices:</strong> Herbal teas, moderate coffee consumption, adequate water intake
+                                </div>
+                            </div>
+
+                            <div class="limit-item">
+                                <h3><i class="fas fa-wine-bottle"></i> Alcohol</h3>
+                                <p>Depressant that can disrupt sleep, affect neurotransmitter balance, and worsen anxiety and depression.</p>
+                                <div class="limit-alternatives">
+                                    <strong>Better choices:</strong> Sparkling water, herbal infusions, mocktails
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Practical Tips -->
+                    <section class="article-section">
+                        <h2>Practical Tips for Eating for Mental Health</h2>
+                        
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <h3>Stay Hydrated</h3>
+                                <p>Even mild dehydration can affect mood and cognitive function. Aim for 8 glasses of water daily.</p>
+                            </div>
+
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <h3>Eat Regularly</h3>
+                                <p>Maintain stable blood sugar by eating regular, balanced meals throughout the day.</p>
+                            </div>
+
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-rainbow"></i>
+                                </div>
+                                <h3>Eat the Rainbow</h3>
+                                <p>Include a variety of colorful fruits and vegetables to ensure diverse nutrient intake.</p>
+                            </div>
+
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h3>Mindful Eating</h3>
+                                <p>Pay attention to your food, eat slowly, and notice how different foods make you feel.</p>
+                            </div>
+
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h3>Meal Prep</h3>
+                                <p>Plan and prepare meals ahead of time to avoid relying on processed convenience foods.</p>
+                            </div>
+
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h3>Be Kind to Yourself</h3>
+                                <p>Progress over perfection. Small, consistent changes are more sustainable than drastic overhauls.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Sample Day -->
+                    <section class="article-section">
+                        <h2>Sample Day of Mental Health-Focused Eating</h2>
+                        
+                        <div class="sample-day">
+                            <div class="meal">
+                                <h3><i class="fas fa-sun"></i> Breakfast (7:00 AM)</h3>
+                                <div class="meal-content">
+                                    <p><strong>Oatmeal Bowl:</strong></p>
+                                    <ul>
+                                        <li>Steel-cut oats with almond milk</li>
+                                        <li>Berries and banana slices</li>
+                                        <li>Walnuts and chia seeds</li>
+                                        <li>Dash of cinnamon</li>
+                                    </ul>
+                                    <p><strong>Mental Health Benefits:</strong> Complex carbs for steady energy, antioxidants, omega-3s, and fiber for gut health.</p>
+                                </div>
+                            </div>
+
+                            <div class="meal">
+                                <h3><i class="fas fa-coffee"></i> Mid-Morning Snack (10:00 AM)</h3>
+                                <div class="meal-content">
+                                    <p><strong>Greek Yogurt Parfait:</strong></p>
+                                    <ul>
+                                        <li>Plain Greek yogurt with live cultures</li>
+                                        <li>Mixed berries</li>
+                                        <li>Sprinkle of pumpkin seeds</li>
+                                        <li>Drizzle of honey</li>
+                                    </ul>
+                                    <p><strong>Mental Health Benefits:</strong> Probiotics for gut health, protein for satiety, antioxidants, and zinc.</p>
+                                </div>
+                            </div>
+
+                            <div class="meal">
+                                <h3><i class="fas fa-sun"></i> Lunch (12:30 PM)</h3>
+                                <div class="meal-content">
+                                    <p><strong>Mediterranean Quinoa Bowl:</strong></p>
+                                    <ul>
+                                        <li>Quinoa base</li>
+                                        <li>Grilled salmon or chickpeas</li>
+                                        <li>Mixed greens and vegetables</li>
+                                        <li>Olive oil and lemon dressing</li>
+                                        <li>Avocado slices</li>
+                                    </ul>
+                                    <p><strong>Mental Health Benefits:</strong> Omega-3s, complete protein, healthy fats, and diverse nutrients.</p>
+                                </div>
+                            </div>
+
+                            <div class="meal">
+                                <h3><i class="fas fa-apple-alt"></i> Afternoon Snack (3:30 PM)</h3>
+                                <div class="meal-content">
+                                    <p><strong>Apple with Almond Butter:</strong></p>
+                                    <ul>
+                                        <li>One apple, sliced</li>
+                                        <li>2 tablespoons natural almond butter</li>
+                                        <li>Small handful of dark chocolate chips (70%+)</li>
+                                    </ul>
+                                    <p><strong>Mental Health Benefits:</strong> Fiber, healthy fats, magnesium, and antioxidants.</p>
+                                </div>
+                            </div>
+
+                            <div class="meal">
+                                <h3><i class="fas fa-moon"></i> Dinner (6:30 PM)</h3>
+                                <div class="meal-content">
+                                    <p><strong>Herb-Roasted Chicken with Vegetables:</strong></p>
+                                    <ul>
+                                        <li>Baked chicken breast with herbs</li>
+                                        <li>Roasted sweet potatoes and broccoli</li>
+                                        <li>Quinoa or brown rice</li>
+                                        <li>Mixed green salad with olive oil dressing</li>
+                                    </ul>
+                                    <p><strong>Mental Health Benefits:</strong> Lean protein, complex carbs, vitamins, minerals, and anti-inflammatory compounds.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- When to Seek Help -->
+                    <section class="article-section">
+                        <h2>When Nutrition Alone Isn't Enough</h2>
+                        <p>While proper nutrition is a powerful tool for supporting mental health, it's important to recognize when professional help is needed. Nutrition should complement, not replace, professional mental health care.</p>
+                        
+                        <div class="seek-help-box">
+                            <h3><i class="fas fa-phone-alt"></i> Seek Professional Help If:</h3>
+                            <ul>
+                                <li>You experience persistent feelings of sadness, anxiety, or hopelessness</li>
+                                <li>Your symptoms interfere with daily activities and relationships</li>
+                                <li>You have significant changes in appetite or weight</li>
+                                <li>You experience sleep disturbances that affect your daily functioning</li>
+                                <li>You have thoughts of self-harm or suicide</li>
+                            </ul>
+                            
+                            <div class="emergency-contact">
+                                <h4><i class="fas fa-exclamation-circle"></i> If you're in crisis, please reach out:</h4>
+                                <p><strong>National Suicide Prevention Lifeline:</strong> <a href="tel:988">988</a> or <a href="tel:1-800-273-8255">1-800-273-8255</a></p>
+                                <p><strong>Crisis Text Line:</strong> Text HOME to <a href="sms:741741">741741</a></p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Conclusion -->
+                    <section class="article-section">
+                        <h2>Conclusion: Nourish Your Mind, Nourish Your Life</h2>
+                        <p>The connection between nutrition and mental health is profound and scientifically validated. By making conscious choices about what you eat, you can significantly impact your mood, stress levels, cognitive function, and overall mental well-being.</p>
+                        
+                        <p>Remember that small, consistent changes are more effective than drastic overhauls. Start by incorporating one or two mood-boosting foods into your daily routine, pay attention to how different foods make you feel, and gradually build habits that support both your physical and mental health.</p>
+                        
+                        <p>Your brain is your most valuable asset—nourish it well, and it will serve you throughout your life's journey.</p>
+                        
+                        <div class="final-thought">
+                            <i class="fas fa-quote-left"></i>
+                            <p>"Let food be thy medicine and medicine be thy food." - Hippocrates</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Article Footer -->
+            <footer class="article-footer">
+                <div class="container">
+                    <div class="article-navigation">
+                        <a href="../resources.html" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to Resources
+                        </a>
+                        <a href="../contact.html" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Contact Us
+                        </a>
+                    </div>
+                    
+                    <div class="related-articles">
+                        <h3>Related Articles</h3>
+                        <div class="related-grid">
+                            <a href="sleep-hygiene.html" class="related-article">
+                                <i class="fas fa-bed"></i>
+                                <h4>Sleep Hygiene Guide</h4>
+                                <p>Improve your sleep quality for better mental health</p>
+                            </a>
+                            <a href="mindfulness-meditation.html" class="related-article">
+                                <i class="fas fa-om"></i>
+                                <h4>Mindfulness Meditation</h4>
+                                <p>Techniques for stress reduction and mental clarity</p>
+                            </a>
+                            <a href="stress-management.html" class="related-article">
+                                <i class="fas fa-leaf"></i>
+                                <h4>Stress Management</h4>
+                                <p>Practical strategies for daily stress relief</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mental Health Champion</h3>
+                    <p>Building a supportive community for mental wellness and recovery.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../resources.html">Resources</a></li>
+                        <li><a href="../community.html">Community</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" onclick="toggleCrisisSupport()">Crisis Support</a></li>
+                        <li><a href="../resources.html">Professional Help</a></li>
+                        <li><a href="../resources.html">Self-Care Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mental Health Champion. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/navigation.js"></script>
+    <script src="../js/themeToggle.js"></script>
+    <script src="../js/accessibility.js"></script>
+    <script src="../js/crisisSupport.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
