@@ -94,7 +94,6 @@ class MentalHealthChampion {
         const moduleOrder = [
             { name: 'themeManager', className: 'ThemeManager', file: 'themeToggle.js' },
             { name: 'accessibilityManager', className: 'AccessibilityManager', file: 'accessibility.js' },
-            { name: 'navigation', className: 'NavigationManager', file: 'navigation.js' },
             { name: 'formValidation', className: 'FormValidator', file: 'formValidation.js' },
             { name: 'crisisSupportManager', className: 'CrisisSupportManager', file: 'crisisSupport.js' },
             { name: 'affirmationManager', className: 'AffirmationManager', file: 'affirmations.js' },
@@ -130,7 +129,7 @@ class MentalHealthChampion {
         
         // If class is not available, check if we should try to load the script
         // Only try to load if it's not one of the scripts included in HTML
-        const htmlIncludedScripts = ['navigation.js', 'themeToggle.js', 'accessibility.js', 'formValidation.js', 'affirmations.js', 'crisisSupport.js', 'moodTracker.js', 'community.js'];
+        const htmlIncludedScripts = ['themeToggle.js', 'accessibility.js', 'formValidation.js', 'affirmations.js', 'crisisSupport.js', 'moodTracker.js', 'community.js'];
         
         if (htmlIncludedScripts.includes(file)) {
             // For HTML-included scripts, try to wait a bit and retry
