@@ -2,7 +2,65 @@
  * Mobile-first approach with breakpoints for tablets and desktops
  */
 
-/* Base mobile styles are in styles.css, these are overrides for larger screens */
+/* Base mobile styles */
+@media (max-width: 767px) {
+    /* Mobile Navigation */
+    .hamburger {
+        display: flex;
+        cursor: pointer;
+        z-index: var(--z-fixed);
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: var(--spacing-lg) 0;
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+        z-index: var(--z-fixed);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-menu li {
+        margin: var(--spacing-md) 0;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: var(--spacing-md) var(--spacing-lg);
+        font-size: var(--font-size-lg);
+    }
+    
+    .nav-controls {
+        gap: var(--spacing-md);
+    }
+    
+    .navbar.scrolled + .nav-menu {
+        top: 55px;
+    }
+}
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
